@@ -305,9 +305,7 @@ class _ExploreListLoadedState extends State<ExploreListLoaded>
                             ),
                           ),
                         ),
-                        const SizedBox(
-                          height: 10,
-                        ),
+                       
                         Expanded(
                           flex: 8,
                           child: TabBarView(
@@ -324,7 +322,7 @@ class _ExploreListLoadedState extends State<ExploreListLoaded>
                                       return Container(
                                         height: 350,
                                         width: double.infinity,
-                                        margin: const EdgeInsets.all(20),
+                                        margin: const EdgeInsets.symmetric(horizontal: 20 , vertical: 10),
                                         child: itemRender(),
                                       );
                                     }),
@@ -356,7 +354,7 @@ class _ExploreListLoadedState extends State<ExploreListLoaded>
               InkWell(
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: ((context) => DetailRoom())));
+                      MaterialPageRoute(builder: ((context) => const DetailRoom())));
                 },
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
@@ -474,7 +472,7 @@ class _ExploreListLoadedState extends State<ExploreListLoaded>
                   ),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFFF76E11)),
+                        backgroundColor: const Color(0xFFF76E11)),
                     onPressed: () {
                       Navigator.of(context).pop();
                       setState(() {
