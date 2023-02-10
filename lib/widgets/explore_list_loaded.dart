@@ -473,8 +473,8 @@ class _ExploreListLoadedState extends State<ExploreListLoaded>
                     },
                   ),
                   ElevatedButton(
-                    style:
-                        ElevatedButton.styleFrom(backgroundColor: Colors.black),
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(0xFFF76E11)),
                     onPressed: () {
                       Navigator.of(context).pop();
                       setState(() {

@@ -35,17 +35,17 @@ class _BottomBarState extends State<BottomBar> {
           child: Container(
             width: 70,
             decoration: BoxDecoration(
-              color: ColorConstants.bottomBarTripBackground,
+              color: ColorConstants.bottomBarItemPrimary,
               borderRadius: BorderRadius.circular(35),
-              boxShadow:  [
-                  BoxShadow(
-                    color: ColorConstants.bottomBarItemPrimary,
-                    spreadRadius: 1,
-                    blurRadius: 5,
-                    blurStyle: BlurStyle.solid,
-         // changes position of shadow
-                  ),
-                ],
+              boxShadow: [
+                BoxShadow(
+                  color: ColorConstants.bottomBarItemPrimary,
+                  spreadRadius: 1,
+                  blurRadius: 5,
+                  blurStyle: BlurStyle.solid,
+                  // changes position of shadow
+                ),
+              ],
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -54,7 +54,9 @@ class _BottomBarState extends State<BottomBar> {
                   Icons.travel_explore,
                   color: Colors.white,
                 ),
-                SizedBox(height: 5,),
+                SizedBox(
+                  height: 5,
+                ),
                 Text(
                   'Chuyến đi',
                   style: TextStyle(
@@ -74,7 +76,6 @@ class _BottomBarState extends State<BottomBar> {
         shape: const CircularNotchedRectangle(),
         notchMargin: 10,
         child: SizedBox(
-
           height: 60,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -83,7 +84,7 @@ class _BottomBarState extends State<BottomBar> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   MaterialButton(
-                    onPressed: (){
+                    onPressed: () {
                       setState(() {
                         currentTab = 0;
                         currentScreen = const Explore();
@@ -94,8 +95,10 @@ class _BottomBarState extends State<BottomBar> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(
-                          Icons.search ,
-                          color: currentTab == 0 ?  ColorConstants.bottomBarItemPrimary : ColorConstants.bottomBarItemSecondary,
+                          Icons.search,
+                          color: currentTab == 0
+                              ? ColorConstants.bottomBarItemPrimary
+                              : ColorConstants.bottomBarItemSecondary,
                         ),
                         Text(
                           'Khám phá',
@@ -108,7 +111,7 @@ class _BottomBarState extends State<BottomBar> {
                       ],
                     ),
                   ),
-                   MaterialButton(
+                  MaterialButton(
                     onPressed: () {
                       setState(() {
                         currentTab = 1;
@@ -136,13 +139,12 @@ class _BottomBarState extends State<BottomBar> {
                       ],
                     ),
                   ),
-                  
                 ],
               ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                   MaterialButton(
+                  MaterialButton(
                     onPressed: () {
                       setState(() {
                         currentTab = 2;
@@ -163,7 +165,8 @@ class _BottomBarState extends State<BottomBar> {
                           'Hộp thư',
                           style: TextStyle(
                             color: currentTab == 2
-                                ? ColorConstants.bottomBarItemPrimary : ColorConstants.bottomBarItemSecondary,
+                                ? ColorConstants.bottomBarItemPrimary
+                                : ColorConstants.bottomBarItemSecondary,
                           ),
                         )
                       ],
@@ -190,7 +193,8 @@ class _BottomBarState extends State<BottomBar> {
                           'Hồ sơ',
                           style: TextStyle(
                             color: currentTab == 3
-                                ? ColorConstants.bottomBarItemPrimary : ColorConstants.bottomBarItemSecondary,
+                                ? ColorConstants.bottomBarItemPrimary
+                                : ColorConstants.bottomBarItemSecondary,
                           ),
                         )
                       ],

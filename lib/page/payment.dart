@@ -108,13 +108,13 @@ class _PaymentState extends State<Payment> {
                     text: 'Nhà của bạn thuê được bảo vệ bởi ',
                     style: TextStyle(color: Colors.black, fontSize: 16)),
                 TextSpan(
-                    text: 'U',
+                    text: 'Stay',
                     style: TextStyle(
                         color: Color(0xFFF76E11),
                         fontSize: 16,
                         fontWeight: FontWeight.w600)),
                 TextSpan(
-                    text: 'Cover',
+                    text: 'Safe',
                     style: TextStyle(
                       fontWeight: FontWeight.w700,
                       color: Colors.black,
