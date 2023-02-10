@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 
 Color hexToColor(String hex) {
@@ -12,8 +11,8 @@ Color hexToColor(String hex) {
 }
 
 class ColorConstants {
-  static Color bottomBarBackground = hexToColor('#FDD0D1');
-  static Color bottomBarItemPrimary = hexToColor('#D70465');
+  static Color bottomBarBackground = hexToColor('#FFFFFF');
+  static Color bottomBarItemPrimary = hexToColor('#F76E11');
   static Color bottomBarItemSecondary = hexToColor('#767676');
   static Color bottomBarTripBackground = hexToColor('#2C2929');
   static Color borderColor1 = hexToColor('#DEE3EB');

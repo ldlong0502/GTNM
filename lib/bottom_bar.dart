@@ -7,7 +7,6 @@ import 'package:travel4/page/profile.dart';
 
 class BottomBar extends StatefulWidget {
   const BottomBar({super.key});
-
   @override
   State<BottomBar> createState() => _BottomBarState();
 }
@@ -38,10 +37,10 @@ class _BottomBarState extends State<BottomBar> {
             decoration: BoxDecoration(
               color: ColorConstants.bottomBarTripBackground,
               borderRadius: BorderRadius.circular(35),
-              boxShadow: const [
+              boxShadow:  [
                   BoxShadow(
-                    color: Colors.red,
-                    spreadRadius: 2,
+                    color: ColorConstants.bottomBarItemPrimary,
+                    spreadRadius: 1,
                     blurRadius: 5,
                     blurStyle: BlurStyle.solid,
          // changes position of shadow

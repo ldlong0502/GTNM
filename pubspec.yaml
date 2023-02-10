@@ -51,6 +51,9 @@ dev_dependencies:
   carousel_pro: ^1.0.0
   syncfusion_flutter_sliders: ^20.4.48
   syncfusion_flutter_charts: ^20.4.48
+  get: ^4.6.5 
+  shimmer: ^2.0.0
+  intl: ^0.18.0
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

@@ -6,17 +6,13 @@ import 'package:travel4/constants.dart';
 
 class ChartPriceRange extends StatefulWidget {
   const ChartPriceRange({super.key});
-
   @override
   State<ChartPriceRange> createState() => _ChartPriceRangeState();
 }
 
 class _ChartPriceRangeState extends State<ChartPriceRange> {
-  final double _min = 10;
-
-  final double _max = 130;
-
  SfRangeValues _values = const SfRangeValues(10.0, 130.0);
+  double min = 10, max = 130;
   final List<Data> chartData = <Data>[
 
     Data(x: 10, y: 10),
@@ -35,19 +31,7 @@ class _ChartPriceRangeState extends State<ChartPriceRange> {
     Data(x: 140, y: 5),
     Data(x: 150, y:10),
   ];
-  // RangeController _rangeController = RangeController(start: 0, end: 0);
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   _rangeController = RangeController(start: _values.start, end: _values.end);
-  // }
-
-  // @override
-  // void dispose() {
-  //   _rangeController.dispose();
-  //   super.dispose();
-  // }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -57,6 +41,7 @@ class _ChartPriceRangeState extends State<ChartPriceRange> {
             backgroundColor: Colors.transparent,
             body:  Column(
                 children: [
+                 
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Padding(
@@ -74,34 +59,36 @@ class _ChartPriceRangeState extends State<ChartPriceRange> {
                         thumbColor: Colors.white,
                         thumbStrokeColor: Colors.black,
                         thumbStrokeWidth: 1,
-                        activeTrackColor: Colors.red,
+                        activeTrackColor: ColorConstants.borderColor1,
                         inactiveTrackColor: Colors.red[100],
                       ),
                       child: SfRangeSelector(
-                        min: _min,
-                        max: _max,
+                        min: min,
+                        max: max,
                         onChanged: (value) {
                           setState(() {
                             _values = value;
                           });
                         },
                      
-                        showTicks: true,
+                        showTicks: true,                       
                         initialValues: _values,
                         child: SizedBox(
                           height: 130,
                           child: SfCartesianChart(
+                            
                             margin: const EdgeInsets.all(0),
                             primaryXAxis: NumericAxis(
-                              minimum: _min,
-                              maximum: _max,
+                              minimum: min,
+                              maximum: max,
                               isVisible: false,
                             ),
                             primaryYAxis: NumericAxis(isVisible: false),
                             plotAreaBorderWidth: 0,
                             series: <ColumnSeries<Data, double>>[
                               ColumnSeries<Data, double>(
-                                  color: ColorConstants.bottomBarItemPrimary,
+                                  color: ColorConstants.borderColor1,
+                                 
                                   dataSource: chartData,
                                   xValueMapper: (Data sales, int index) => sales.x,
                                   yValueMapper: (Data sales, int index) => sales.y)
