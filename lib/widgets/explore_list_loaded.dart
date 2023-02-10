@@ -8,6 +8,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 
 import 'package:travel4/constants.dart';
+import 'package:travel4/page/detail_room.dart';
 import 'package:travel4/widgets/chart_price_range.dart';
 import 'package:travel4/widgets/explore_shimmer.dart';
 
@@ -352,22 +353,28 @@ class _ExploreListLoadedState extends State<ExploreListLoaded>
           height: 250,
           child: Stack(
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: Carousel(
-                  dotSize: 6.0,
-                  dotSpacing: 15.0,
-                  dotPosition: DotPosition.bottomCenter,
-                  autoplay: false,
-                  overlayShadowColors: Colors.transparent,
-                  animationDuration: const Duration(milliseconds: 1000),
-                  images: [
-                    Image.asset('assets/images/1.png', fit: BoxFit.cover),
-                    Image.asset('assets/images/2.png', fit: BoxFit.cover),
-                    Image.asset('assets/images/3.png', fit: BoxFit.cover),
-                    Image.asset('assets/images/4.png', fit: BoxFit.cover),
-                    Image.asset('assets/images/5.png', fit: BoxFit.cover),
-                  ],
+              InkWell(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: ((context) => DetailRoom())));
+                },
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Carousel(
+                    dotSize: 6.0,
+                    dotSpacing: 15.0,
+                    dotPosition: DotPosition.bottomCenter,
+                    autoplay: false,
+                    overlayShadowColors: Colors.transparent,
+                    animationDuration: const Duration(milliseconds: 1000),
+                    images: [
+                      Image.asset('assets/images/1.png', fit: BoxFit.cover),
+                      Image.asset('assets/images/2.png', fit: BoxFit.cover),
+                      Image.asset('assets/images/3.png', fit: BoxFit.cover),
+                      Image.asset('assets/images/4.png', fit: BoxFit.cover),
+                      Image.asset('assets/images/5.png', fit: BoxFit.cover),
+                    ],
+                  ),
                 ),
               ),
               Positioned(
@@ -446,8 +453,8 @@ class _ExploreListLoadedState extends State<ExploreListLoaded>
               height: 70,
               decoration: BoxDecoration(
                   color: Colors.transparent,
-                  border: Border.all(
-                      width: 1, color: ColorConstants.borderColor1),
+                  border:
+                      Border.all(width: 1, color: ColorConstants.borderColor1),
                   borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(10),
                       topRight: Radius.circular(10))),
@@ -466,23 +473,27 @@ class _ExploreListLoadedState extends State<ExploreListLoaded>
                     },
                   ),
                   ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.black),
-                      onPressed: () {
-                        Navigator.of(context).pop();
+                    style:
+                        ElevatedButton.styleFrom(backgroundColor: Colors.black),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      setState(() {
+                        isLoading = true;
+                      });
+                      Future.delayed(const Duration(seconds: 3), () {
                         setState(() {
-                          isLoading = true;
+                          isLoading = false;
                         });
-                        Future.delayed(const Duration(seconds: 3), () {
-                          setState(() {
-                            isLoading = false;
-                          });
-                        });
-                      },
-                      child: const Padding(
-                        padding: EdgeInsets.all(5.0),
-                        child: Text('Hiện 100 nhà', style: TextStyle(color: Colors.white),),
-                      ),)
+                      });
+                    },
+                    child: const Padding(
+                      padding: EdgeInsets.all(5.0),
+                      child: Text(
+                        'Hiện 100 nhà',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  )
                 ],
               ),
             ),
@@ -614,7 +625,6 @@ class _ExploreListLoadedState extends State<ExploreListLoaded>
                           endIndent: 20,
                           color: ColorConstants.borderColor1,
                         ),
-                        
                         const Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
@@ -628,10 +638,12 @@ class _ExploreListLoadedState extends State<ExploreListLoaded>
                             ),
                           ),
                         ),
-                        SizedBox(height: 200, child: Padding(
-                          padding: const EdgeInsets.all(3.0),
-                          child: whoGoWidget(updateState),
-                        )),
+                        SizedBox(
+                            height: 200,
+                            child: Padding(
+                              padding: const EdgeInsets.all(3.0),
+                              child: whoGoWidget(updateState),
+                            )),
                         Divider(
                           thickness: 1,
                           indent: 20,
@@ -682,10 +694,12 @@ class _ExploreListLoadedState extends State<ExploreListLoaded>
                             ),
                           ),
                         ),
-                        SizedBox(height: 220, child: Padding(
-                          padding: const EdgeInsets.all(3.0),
-                          child: typePlace(updateState),
-                        )),
+                        SizedBox(
+                            height: 220,
+                            child: Padding(
+                              padding: const EdgeInsets.all(3.0),
+                              child: typePlace(updateState),
+                            )),
                         Divider(
                           thickness: 1,
                           indent: 20,
@@ -1077,9 +1091,9 @@ class _ExploreListLoadedState extends State<ExploreListLoaded>
       (element) => element == who,
     );
     return SizedBox(
-      height: 50,
-      width: double.infinity,
-      child: ListTile(
+        height: 50,
+        width: double.infinity,
+        child: ListTile(
           title: Text(
             who.title!,
           ),
@@ -1087,25 +1101,28 @@ class _ExploreListLoadedState extends State<ExploreListLoaded>
             who.subTitle!,
             style: TextStyle(color: ColorConstants.bottomBarItemSecondary),
           ),
-            trailing:  FittedBox(
-              child: Row(
-                children: [
-                  IconButton(
-                      iconSize: 25,
-                      color: who.amount == 0 ? Colors.grey : Colors.black,
-                      onPressed: () {
-                        if( who.amount == 0) return;
-                        updateState(() {
-                          whoList.removeAt(index);
-                          whoList.insert(index, who.copyWith(amount: who.amount! - 1));
-                        });
-                      },
-                      icon: const Icon(Icons.remove_circle_outline)),
-                  Text(who.amount!.toString(), style: const TextStyle(fontSize: 18),),
-                  IconButton(
+          trailing: FittedBox(
+            child: Row(
+              children: [
+                IconButton(
                     iconSize: 25,
-                    
-                    color:  Colors.black,
+                    color: who.amount == 0 ? Colors.grey : Colors.black,
+                    onPressed: () {
+                      if (who.amount == 0) return;
+                      updateState(() {
+                        whoList.removeAt(index);
+                        whoList.insert(
+                            index, who.copyWith(amount: who.amount! - 1));
+                      });
+                    },
+                    icon: const Icon(Icons.remove_circle_outline)),
+                Text(
+                  who.amount!.toString(),
+                  style: const TextStyle(fontSize: 18),
+                ),
+                IconButton(
+                    iconSize: 25,
+                    color: Colors.black,
                     onPressed: () {
                       updateState(() {
                         whoList.removeAt(index);
@@ -1114,12 +1131,10 @@ class _ExploreListLoadedState extends State<ExploreListLoaded>
                       });
                     },
                     icon: const Icon(Icons.add_circle_outline)),
-                ],
-              ),
+              ],
             ),
-          
-        
-    ));
+          ),
+        ));
   }
 
   Widget typePlace(StateSetter updateState) {
